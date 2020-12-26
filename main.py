@@ -15,7 +15,7 @@ width = root.winfo_screenwidth()
 height = root.winfo_screenheight()
 
 #Setting the title of the window
-root.title("Alpha v1.0")
+root.title("Alpha Beta")
 
 #Disable resizing the GUI as (x = false, y = false)
 root.resizable(1,1)
@@ -23,7 +23,14 @@ root.resizable(1,1)
 #Disable minimize
 root.wm_minsize(0,0)
 
+
 root.configure(bg = "black")
 
 #Setting the resolution of the GUI using the Vars.
 root.geometry('%dx%d+0+0' %(width,height))
+
+#Keeping the app running forever
+root.mainloop()
+
+#unhide the taskbar after exiting the GUI
+config_tastbar.unhide_taskbar()
