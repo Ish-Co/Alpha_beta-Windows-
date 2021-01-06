@@ -1,150 +1,79 @@
 import tkinter as tk
 
 # Creating an instance of the class
-root = tk.Tk()
+root = tk.Tk ()
 
-door = tk.Canvas(root , width=1000 , height=800 , bg='white')
-door.pack()
+door = tk.Canvas (root , width=1000 , height=800 , bg='white')
+door.pack ()
 
-factor = 20
-x = 50
-y = 50 - 1.65
-# door.create_line(x,y,x,y-(1.65*factor),x-(0.65*factor),y-(1.65*factor),x-(0.65*factor),y+(0.37*factor))
-# door.create_line(x,y,x,y-(1.65*factor),x-(0.65*factor),y-(1.65*factor),x-(0.37*factor),y+(0.65*factor),x+(0.37*factor),y+(0.65*factor))
-# door.create_line(x,y-(1.65*factor),x-(0.65*factor),y-(1.65*factor))
-x = 50
-y = 50
-# door.create_rectangle(x,y,x+(4.75* factor),y+(0.65* factor))
-# door.create_line(x+(4.75* factor),y,x+(4.75* factor),y-(1.65*factor), x+(0.65*factor),y-(1.65*factor))
-# door.create_rectangle(x,y+(0.65*factor),x+(1.5* factor),y+(30.65* factor))
-
-
-# NORTH/SOUTH TRIM
-def ns_trim(x , y , door_width, wall_width, c):
-    door.create_line(x , y , x - (0.66 * c) , y , x - (0.37 * c) , y + (2.30 * c) , x , y + (2.30 * c) , x , y)
-    x += (wall_width * c)
-    door.create_line(x , y , x + (0.66 * c) , y , x + (0.37 * c) , y + (2.30 * c) , x , y + (2.30 * c) , x , y)
-    x -= (wall_width * c)
-    y = ((door_width+4.6) * c)
-    door.create_line(x , y , x - (0.66 * c) , y , x - (0.37 * c) , y - (2.30 * c) , x , y - (2.30 * c) , x , y)
-    x += (wall_width * c)
-    door.create_line(x , y , x + (0.66 * c) , y , x + (0.37 * c) , y - (2.30 * c) , x , y - (2.30 * c) , x , y)
-
-def ew_trim(x , y , door_width, wall_width, c):
-    door.create_line(x , y , x , y - (0.66 * c) , x - (2.30 * c) , y - (0.37 * c) , x - (2.30 * c) , y , x , y)
-    y += (wall_width * c)
-    door.create_line(x , y , x , y + (0.66 * c) , x - (2.30 * c) , y + (0.37 * c) , x - (2.30 * c) , y , x , y)
-    y -= (wall_width * c)
-    x -= ((door_width+4.6) * c)
-    door.create_line(x , y , x , y - (0.66 * c) , x + (2.30 * c) , y - (0.37 * c) , x + (2.30 * c) , y , x , y)
-    y += (wall_width * c)
-    door.create_line(x , y , x , y + (0.66 * c) ,x + (2.30 * c) , y + (0.37 * c), x + (2.30 * c) , y ,x,y)
-
-def vert_door(x,y,w,l,c):
-    door.create_rectangle(x,y,x+(w* c),y+(l* c))
-    door.create_line(x , y , x , y - (l * c))
-
-
-def horz_door(x,y,w,l,c):
-    door.create_rectangle(x , y , x - (l * c) , y + (w * c))
-    door.create_line(x , y , x , y - (l * c))
-    door.create_arc(x-(l*c),y-(l*c),x+(l*c),y+(l*c),start=90, extent = 90)
-
-def vert_frame(x,y,c):
-    door.create_rectangle(x , y , x + (4.75*c) , y + (0.65 * c))
-
-def horz_frame(x , y , door_width, c):
-    door.create_rectangle(x , y , x - (0.65 * c) , y + (4.75 * c))
-    x-=(door_width+0.65)*c
-    door.create_rectangle(x , y , x - (0.65 * c) , y + (4.75 * c))
-
-
-def create_doorframe(x,y, door_width = 30 , door_offset = 1.5 , frame_width = 4.75, opens = 'rt', facing='north'):
-
-
-create_doorframe(30,40)
-ew_trim(500 , 400 , 30,4.75,12)
-horz_door(500-(2.3*12),400,1.5,30,12)
-horz_frame(500-(1.65*12),400,30,12)
-
-
-#ns_trim(500 , 200 , 30,4.75,12)
-
-
-
-root.mainloop()
-import tkinter as tk
-
-# Creating an instance of the class
-root = tk.Tk()
-
-door = tk.Canvas(root , width=1000 , height=800 , bg='white')
-door.pack()
-
-factor = 20
-x = 50
-y = 50 - 1.65
-# door.create_line(x,y,x,y-(1.65*factor),x-(0.65*factor),y-(1.65*factor),x-(0.65*factor),y+(0.37*factor))
-# door.create_line(x,y,x,y-(1.65*factor),x-(0.65*factor),y-(1.65*factor),x-(0.37*factor),y+(0.65*factor),x+(0.37*factor),y+(0.65*factor))
-# door.create_line(x,y-(1.65*factor),x-(0.65*factor),y-(1.65*factor))
-x = 50
-y = 50
-# door.create_rectangle(x,y,x+(4.75* factor),y+(0.65* factor))
-# door.create_line(x+(4.75* factor),y,x+(4.75* factor),y-(1.65*factor), x+(0.65*factor),y-(1.65*factor))
-# door.create_rectangle(x,y+(0.65*factor),x+(1.5* factor),y+(30.65* factor))
-
-
-# NORTH/SOUTH TRIM
-def ns_trim(x , y , door_width, wall_width, c):
-    door.create_line(x , y , x - (0.66 * c) , y , x - (0.37 * c) , y + (2.30 * c) , x , y + (2.30 * c) , x , y)
-    x += (wall_width * c)
-    door.create_line(x , y , x + (0.66 * c) , y , x + (0.37 * c) , y + (2.30 * c) , x , y + (2.30 * c) , x , y)
-    x -= (wall_width * c)
-    y = ((door_width+4.6) * c)
-    door.create_line(x , y , x - (0.66 * c) , y , x - (0.37 * c) , y - (2.30 * c) , x , y - (2.30 * c) , x , y)
-    x += (wall_width * c)
-    door.create_line(x , y , x + (0.66 * c) , y , x + (0.37 * c) , y - (2.30 * c) , x , y - (2.30 * c) , x , y)
-
-def ew_trim(x , y , door_width, wall_width, c):
-    door.create_line(x , y , x , y - (0.66 * c) , x - (2.30 * c) , y - (0.37 * c) , x - (2.30 * c) , y , x , y)
-    y += (wall_width * c)
-    door.create_line(x , y , x , y + (0.66 * c) , x - (2.30 * c) , y + (0.37 * c) , x - (2.30 * c) , y , x , y)
-    y -= (wall_width * c)
-    x -= ((door_width+4.6) * c)
-    door.create_line(x , y , x , y - (0.66 * c) , x + (2.30 * c) , y - (0.37 * c) , x + (2.30 * c) , y , x , y)
-    y += (wall_width * c)
-    door.create_line(x , y , x , y + (0.66 * c) ,x + (2.30 * c) , y + (0.37 * c), x + (2.30 * c) , y ,x,y)
-
-def vert_door(x,y,w,l,c):
-    door.create_rectangle(x,y,x+(w* c),y+(l* c))
-    door.create_line(x , y , x , y - (l * c))
-
-
-def horz_door(x,y,w,l,c):
-    door.create_rectangle(x , y , x - (l * c) , y + (w * c))
-    door.create_line(x , y , x , y - (l * c))
-    door.create_arc(x-(l*c),y-(l*c),x+(l*c),y+(l*c),start=90, extent = 90)
-
-def vert_frame(x,y,c):
-    door.create_rectangle(x , y , x + (4.75*c) , y + (0.65 * c))
-
-def horz_frame(x , y , door_width, c):
-    door.create_rectangle(x , y , x - (0.65 * c) , y + (4.75 * c))
-    x-=(door_width+0.65)*c
-    door.create_rectangle(x , y , x - (0.65 * c) , y + (4.75 * c))
-
-
-def create_doorframe(x,y, door_width = 30 , door_offset = 1.5 , frame_width = 4.75, opens = 'rt', facing='north'):
-
-
-create_doorframe(30,40)
-ew_trim(500 , 400 , 30,4.75,12)
-horz_door(500-(2.3*12),400,1.5,30,12)
-horz_frame(500-(1.65*12),400,30,12)
-
-
-#ns_trim(500 , 200 , 30,4.75,12)
-
-
+def create_doorframe(self , x , y , c , door_width=30 , door_offset=1.5 , frame_width=4.75 , opens='rt' , facing='n'):
+    # OPTION A , B , C , OR D
+    if (facing == 'n') or (facing == 's'):
+        y1 = y + (4.75 * c)
+        x1 = x + (1.65 * c)
+        y2 = y1 + (0.66 * c)
+        x2 = x1 - (2.30 * c)
+        y3 = y1 + (0.37 * c)
+        y4 = y3 - (5.49 * c)
+        x3 = x2 + (2.30 * c)
+        y5 = y4 - (0.29 * c)
+        #       The line below will create the right trim corner        #
+        #                              [                                #
+        self.create_line (x , y , x , y1 , x1 , y1 , x1 , y2 , x2 , y3 , x2 , y4 , x3 , y5 , x3 , y , x , y)
+        x -= (door_width + 1.30) * c
+        x1 = x - (1.65 * c)
+        x2 = x1 + (2.30 * c)
+        x3 = x2 - (2.30 * c)
+        #       The line below will create the left trim corner         #
+        #                              ]                                #
+        self.create_line (x , y , x , y1 , x1 , y1 , x1 , y2 , x2 , y3 , x2 , y4 , x3 , y5 , x3 , y , x , y)
+        x += (door_width + 1.30) * c
+        x4 = x - (0.65 * c)
+        x5 = x4 - (door_width * c)
+        #   OPTION A OR B
+        if (facing == 'n'):
+            y6 = y + (door_offset * c)
+            #       Create a line between the two corners          #
+            #               ]---------------[                      #
+            self.create_line (x4 , y6 , x5 , y6)
+            x7 = x4 - (door_width * c)
+            x8 = x4 + (door_width * c)
+            y7 = y - (door_width * c)
+            y8 = y + (door_width * c)
+            #   OPTION A
+            if (opens == 'rt'):
+                #       The line below will create the door arc         #
+                self.create_arc (x7 , y7 , x8 , y8 , start=90 , extent=90)
+            #   OPTION B
+            else:
+                x7 -= (door_width * c)
+                #       The line below will create the door arc         #
+                self.create_arc (x4 , y7 , x7 , y8 , start=0 , extent=90)
+        #   OPTION C OR D
+        else:
+            y6 = y + ((door_offset + 1.75) * c)
+            #       Create a line between the two corners          #
+            #               ]---------------[                      #
+            self.create_line (x4 , y6 , x5 , y6)
+            y += (frame_width * c)
+            y7 = y - (door_width * c)
+            y8 = y + (door_width * c)
+            x7 = x4 - (door_width * c)
+            #   OPTION C
+            if (opens == 'rt'):
+                x7 -= (door_width * c)
+                #       The line below will create the door arc         #
+                self.create_arc (x7 , y7 , x4 , y8 , start=270 , extent=90)
+            #   OPTION D
+            else:
+                #       The line below will create the door arc         #
+                self.create_arc (x7 , y7 , x4 , y8 , start=180 , extent=90)
+    else:
+        print ("function is under constraction!")
+        
+# create_doorframe (door , 600 , 400 , 12 , door_width=15 , opens='rt' , facing='n') # TEST CALL FUNCTION TO DRAW OPTION A 
+# create_doorframe (door , 600 , 400 , 12 , door_width=15 , opens='lt' , facing='n') # TEST CALL FUNCTION TO DRAW OPTION B 
+# create_doorframe (door , 600 , 400 , 12 , door_width=15 , opens='rt' , facing='s') # TEST CALL FUNCTION TO DRAW OPTION C 
+# create_doorframe (door , 600 , 400 , 12 , door_width=15 , opens='lt' , facing='s') # TEST CALL FUNCTION TO DRAW OPTION D 
 
 root.mainloop()
