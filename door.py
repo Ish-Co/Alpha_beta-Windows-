@@ -71,6 +71,25 @@ def create_doorframe(self , x , y , c , door_width=30 , door_offset=1.5 , frame_
     else:
         print ("function is under constraction!")
         
+def create_window (self , x , y, c , width_a = 31 , width_b =  28, offset = 2.5 , direction = 'n'):
+    if (direction == 'n') or (direction == 's'):
+        self.create_rectangle (x , y+ (offset * c), x + ((width_a*c)), y+((offset*c)/2))
+        self.create_rectangle (x + (width_a*c) , y, x + ((width_a+width_b) * c) , y + ((offset * c) / 2))
+    else:
+        self.create_rectangle (y + (offset * c), x , y + ((offset * c) / 2), x + ((width_a * c)))
+        self.create_rectangle (y , x + (width_a * c) , y + ((offset * c) / 2),  x + ((width_a + width_b) * c) )
+
+def create_wall (self, x , y, c , length, width = 4.75, direction = 'n'):
+    if (direction == 'n') or (direction == 's'):
+        self.create_rectangle(x,y, x + (length*c), y + (width*c), fill = '#000fff000', outline = '#000fff000')
+    else:
+        self.create_rectangle (y , x , y + (width * c) , x + (length * c) ,  fill='#000fff000' , outline='#000fff000')
+
+
+create_wall(door,400,400,5,50)
+create_window(door, 650, 400,5, direction='n')
+create_wall(door,400,946,5,50, direction='e')
+
 # create_doorframe (door , 600 , 400 , 12 , door_width=15 , opens='rt' , facing='n') # TEST CALL FUNCTION TO DRAW OPTION A 
 # create_doorframe (door , 600 , 400 , 12 , door_width=15 , opens='lt' , facing='n') # TEST CALL FUNCTION TO DRAW OPTION B 
 # create_doorframe (door , 600 , 400 , 12 , door_width=15 , opens='rt' , facing='s') # TEST CALL FUNCTION TO DRAW OPTION C 
