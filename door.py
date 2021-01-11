@@ -79,20 +79,38 @@ def create_window (self , x , y, c , width_a = 31 , width_b =  28, offset = 2.5 
         self.create_rectangle (y + (offset * c), x , y + ((offset * c) / 2), x + ((width_a * c)))
         self.create_rectangle (y , x + (width_a * c) , y + ((offset * c) / 2),  x + ((width_a + width_b) * c) )
 
-def create_wall (self, x , y, c , length, width = 4.75, direction = 'n'):
-    if (direction == 'n') or (direction == 's'):
+def create_wall (self, x , y, c , length, width = 4.75, orientation = 'horz'):
+    if (orientation == 'horz'):
         self.create_rectangle(x,y, x + (length*c), y + (width*c), fill = '#000fff000', outline = '#000fff000')
+        return x + (length*c)
     else:
         self.create_rectangle (y , x , y + (width * c) , x + (length * c) ,  fill='#000fff000' , outline='#000fff000')
+        return y + (length*c)
 
 
-create_wall(door,400,400,5,50)
-create_window(door, 650, 400,5, direction='n')
-create_wall(door,400,946,5,50, direction='e')
+c = 2
+
+### Master Room
+x1 = create_wall(door, 10,10,c, 165, orientation = 'horz')
+#print("x : ", x)
+y1 = create_wall(door, 10,10,c, 161.5, orientation = 'vert')
+#print("x : ", x)
+#print("y : ", y)
+x2 = create_wall(door, 10,y1,c, 165, orientation = 'horz')
+#print("x : ", x1)
+y2 = create_wall(door, 10,x1,c, 161.5, orientation = 'vert')
+#print("x : ", x1)
+#print("y : ", y1)
+
+
+### Guess Room
+#create_wall(door,400,400,c,50)
+#create_window(door, 650, 400,5, direction='n')
+#create_wall(door,400,946,5,50, direction='e')
 
 # create_doorframe (door , 600 , 400 , 12 , door_width=15 , opens='rt' , facing='n') # TEST CALL FUNCTION TO DRAW OPTION A 
 # create_doorframe (door , 600 , 400 , 12 , door_width=15 , opens='lt' , facing='n') # TEST CALL FUNCTION TO DRAW OPTION B 
 # create_doorframe (door , 600 , 400 , 12 , door_width=15 , opens='rt' , facing='s') # TEST CALL FUNCTION TO DRAW OPTION C 
-# create_doorframe (door , 600 , 400 , 12 , door_width=15 , opens='lt' , facing='s') # TEST CALL FUNCTION TO DRAW OPTION D 
+# create_doorframe (door , 600 , 400 , 12 , door_width=15 , opens='lt' , facing='s') # TEST CALL FUNCTION TO DRAW OPTION D
 
 root.mainloop()
