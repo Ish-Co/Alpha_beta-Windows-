@@ -1,8 +1,6 @@
 import tkinter as tk
-#import config_tastbar            #This import method will compile the "config" before executing the line below.
-#import config_cursor_pos as cursor
-import datetime
-import turtle
+import draw
+
 
 #Creating an instance of the class
 root = tk.Tk()
@@ -10,25 +8,44 @@ root = tk.Tk()
 #Setting the title of the window
 root.title("Alpha Beta")
 
-#Disable resizing the GUI as (x = false, y = false)
-#root.resizable(1,1)
+#Collecting the screen resolution through tkinter and assign it to Vars
+width = root.winfo_screenwidth()
+height = root.winfo_screenheight()
 
-#Disable minimize
-#root.wm_minsize(0,0)
+#MAKE THE APP FULLSCREEN AT ALL TIMES
 root.attributes('-fullscreen', True)
-root.configure(bg = "white")
+
+
+x_plan = 481.250
+y_plan = 354.750
+c = 3
 
 
 ### Living Room ###
-living_room = tk.Canvas(root, bg = 'black', height = 300, width = 300)
-living_room.place(x = 0, y = 100)
-ls_button = tk.Button(living_room)
-ls_button.place(x = 0, y = 0)
-ls_button.configure(font = 'currier 26 bold', background = "green", text = "Light ON")
+plan = tk.Canvas(root, width=x_plan*c , height=y_plan*c , bg='black')
+plan.place(x = 20, y = 0)
 
+x = 0
+y = 0
+### Master Room
+x0,y0 = draw.create_wall (plan , x , y , c , 54.125, width=6.125, orientation='vert')
+x1,y1 = draw.create_window(plan, x, y0, c, direction='w')
+x2,y2 = draw.create_wall (plan , x , y1 , c , 55.125, width=6.125, orientation='vert')
+
+x3,y3 = draw.create_wall (plan , x0 , y , c , 185.625, orientation='horz')
+y2-=(4.125*c)
+x4,y4 = draw.create_wall (plan , x2 , y2 , c , 174.750, orientation='horz')
+
+x5,y5 = draw.create_wall (plan , x4 , y , c , 129.027, orientation='vert')
+draw.create_doorframe(plan, x4,y5,c,opens= 'lt', facing = 'w')
+y6= y5+(31.3*c)
+x7,y7 = draw.create_wall (plan , x4 , y6 , c , 7.425, orientation='vert')
+
+draw.light_off(plan, 50,50,200)
 
 
 
 
 #Keeping the app running forever
 root.mainloop()
+
