@@ -98,3 +98,14 @@ def light_off(self, x, y, size):
     self.create_line (x + (size/2), y + (size * 0.55) , x + (size/2) , y + (size * 0.65) , fill='white', width = 2)
     self.create_arc (x+x0+x0 , y-(size*0.05) , x+x0+x0+x1+x2+x1 , y+(size*0.55) , outline='white', style = 'chord', start=180 , extent=180, width = 2)
     self.create_line (x + (size / 2) , y + (size * 0.55) , x - (size / 2) , y + (size * 0.65) , fill='white' , width=2)
+    
+def light_on(self, x, y, size):
+    coord_a = x+(size*0.05) , y + (size * 0.275) , x + (size * 0.2) , y + (size * 0.275)
+    coord_b =  x + ( size * 0.7 ) , y + (size * 0.275) , x + (size * 0.95) , y + (size * 0.275)
+    coord_c = x + ( size / 2 ) , y + (size * 0.572) , x + (size / 2) , y + (size * 0.672)
+    coord_f = x + (size * 0.3) , y - (size * 0.025) , x + (size * 0.7), y + (size *0.475)
+    self.create_line(coor_a, outline = 'white') 
+    self.create_line(coor_b, outline = 'white') 
+    self.create_line(coor_c, outline = 'white') 
+    self.create_arc(coor_f, outline = 'white', style = 'chord', start=180 , extent=180) 
+    
